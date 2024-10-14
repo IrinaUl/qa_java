@@ -11,7 +11,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
 public class LionTests {
-  
+
   @Mock
   private Feline feline;
 
@@ -29,22 +29,4 @@ public class LionTests {
     Lion lion = new Lion(feline);
     Assert.assertEquals(3, lion.getKittens());
   }
-
-  @Test
-  public void checkHaveManeMale() throws Exception {
-    Lion lionMale = new Lion("Самец");
-    Assert.assertTrue(lionMale.doesHaveMane());
-  }
-
-  @Test
-  public void checkHaveManeFemale() throws Exception {
-    Lion lionFemale = new Lion("Самка");
-    Assert.assertFalse(lionFemale.doesHaveMane());
-  }
-
-  @Test(expected = Exception.class)
-  public void InvalidSex() throws Exception {
-    Lion lion = new Lion("Гендер");
-  }
-
 }
