@@ -29,4 +29,21 @@ public class LionTests {
     Lion lion = new Lion(feline);
     Assert.assertEquals(3, lion.getKittens());
   }
+
+  @Test
+  public void checkHaveManeMale() throws Exception {
+    Lion lion = new Lion("Самец");
+    Assert.assertTrue(lion.doesHaveMane());
+  }
+
+  @Test
+  public void checkHaveManeFemale() throws Exception {
+    Lion lion = new Lion("Самка");
+    Assert.assertFalse(lion.doesHaveMane());
+  }
+
+  @Test(expected = Exception.class)
+  public void InvalidSex() throws Exception {
+    Lion lion = new Lion("Гендер");
+  }
 }
