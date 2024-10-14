@@ -4,15 +4,24 @@ import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
+@RunWith(MockitoJUnitRunner.class)
 public class FelineTests {
+
+  @Mock
+  private Animal animal;
   
   @Test
   public void getEatTest() throws Exception  {
-    Feline feline = new Feline();
-    List<String> eat = feline.eatMeat();
     List<String> expected = List.of("Животные", "Птицы", "Рыба");
-    Assert.assertEquals(expected, eat);
+    Mockito.when(animal.getFood("Хищник")).thenReturn(expected);
+    Feline feline = new Feline();
+    List<String> actual = feline.eatMeat();
+    Assert.assertEquals(expected, actual);
   }
 
   @Test
@@ -30,6 +39,6 @@ public class FelineTests {
   @Test
   public void getKittensWithArgumentTest() {
     Feline feline = new Feline();
-    Assert.assertEquals(3, feline.getKittens(3));
+    Assert.assertEquals(5, feline.getKittens(5));
   }
 }
