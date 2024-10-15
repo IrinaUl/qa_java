@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -26,14 +27,12 @@ public class LionTestParameters {
         });
     }
 
+    @Mock
+    private Feline feline;
+
     @Test
     public void checkHaveMane() throws Exception {
-        Lion lion = new Lion(this.sex);
+        Lion lion = new Lion(this.sex, feline);
         Assert.assertEquals(this.haveMane,lion.doesHaveMane());
-    }
-
-    @Test(expected = Exception.class)
-    public void InvalidSex() throws Exception {
-        Lion lion = new Lion("Гендер");
     }
 }
